@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/02/15/Wi-Fi/WifiChannel/</loc>
+    
+    <lastmod>2019-02-15T10:04:24.831Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/02/15/Location/temp/</loc>
+    
+    <lastmod>2019-02-15T09:06:20.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/02/15/Location/concepts/</loc>
+    
+    <lastmod>2019-02-15T08:58:02.972Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/02/15/MarkDown/markdown/</loc>
     
     <lastmod>2019-02-15T07:30:32.477Z</lastmod>
@@ -16,14 +37,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/about/index.html</loc>
+    <loc>http://yoursite.com/categories/index.html</loc>
     
     <lastmod>2019-02-14T03:39:23.033Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/categories/index.html</loc>
+    <loc>http://yoursite.com/about/index.html</loc>
     
     <lastmod>2019-02-14T03:39:23.033Z</lastmod>
     
