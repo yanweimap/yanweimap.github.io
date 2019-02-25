@@ -76,7 +76,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -95,10 +95,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Entradas',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categorias',
-            TAGS: 'Etiquetas',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -129,7 +129,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
     </div>
 
                 </td>
@@ -146,7 +146,7 @@
         
     <div class="widget-wrap" id="categories">
         <h3 class="widget-title">
-            <span>Categorias</span>
+            <span>categories</span>
             &nbsp;
             <a id="allExpand" href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -160,9 +160,63 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DailyTool
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/DailyTool/caculate/">linux计算器和时间显示</a></li>  <li class="file"><a href="/2019/02/21/Linux/DailyTool/packageTool/">Linux打包压缩相关命令</a></li>  <li class="file"><a href="/2019/02/25/Linux/DailyTool/PackageManager/">Linux包管理器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            File
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/File/lsof/">lsof命令 - List open files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Network
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Network/networktool1/">网络常用工具命令(1)</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Process
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Process/4kill/">5 ways to kill process</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            LinuxDebug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/LinuxDebug/tooldebug/">ubuntu常见工具问题debug</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             Location
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/15/Location/concepts/">定位常用概念与术语</a></li>  <li class="file"><a href="/2019/02/15/Location/temp/"></a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Location/concepts/">定位常用概念与术语</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -171,7 +225,7 @@
                             &nbsp;
                             MarkDown
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/15/MarkDown/markdown/">MarkDown基本语法参考</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/MarkDown/markdown/">MarkDown基本语法参考</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -180,9 +234,9 @@
                             &nbsp;
                             Wi-Fi
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/15/Wi-Fi/WifiChannel/">Wi-Fi频段速查</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Wi-Fi/WifiChannel/">Wi-Fi频段速查</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2019/02/14/Welcom/">Welcome Amy personal site</a></li>  </ul> 
+                     <li class="file"><a href="/2019/02/21/index/">Welcome Amy personal site</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -254,339 +308,7 @@
 </aside>
             
             <section id="main">
-        <article id="post-Wi-Fi/WifiChannel" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Wi-Fi/">Wi-Fi</a>
-    </div>
-
-                        
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2019/02/15/Wi-Fi/WifiChannel/">
-            <time datetime="2019-02-15T10:04:24.831Z" itemprop="datePublished">2019-02-15</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Wi-Fi/WifiChannel.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Wi-Fi/WifiChannel.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Wi-Fi/WifiChannel.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/02/15/Wi-Fi/WifiChannel/">Wi-Fi频段速查</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h1 id="2-4G-20M-信道与频率情况"><a href="#2-4G-20M-信道与频率情况" class="headerlink" title="2.4G 20M 信道与频率情况"></a>2.4G 20M 信道与频率情况</h1><table>
-<thead>
-<tr>
-<th style="text-align:center">信道</th>
-<th style="text-align:center">频宽(MHz)</th>
-<p>
-                
-            
-        
-        
-            </p></tr></thead></table></div>   
-            <div class="article-more-link">
-                <a href="/2019/02/15/Wi-Fi/WifiChannel/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Location/temp" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p>定位方法和定位原理<br>不同卫星系统频段</p>
-
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Location/concepts" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Location/">Location</a>
-    </div>
-
-                        
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2019/02/15/Location/concepts/">
-            <time datetime="2019-02-15T08:58:02.972Z" itemprop="datePublished">2019-02-15</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Location/concepts.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Location/concepts.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Location/concepts.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/02/15/Location/concepts/">定位常用概念与术语</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h1 id="Location-related-concepts-and-terminology"><a href="#Location-related-concepts-and-terminology" class="headerlink" title="Location related concepts and terminology"></a>Location related concepts and terminology</h1><h2 id="定位系统简写"><a href="#定位系统简写" class="headerlink" title="定位系统简写"></a>定位系统简写</h2><p><strong>GNSS</strong> - Global Navigation Satellite System 全球导航卫星系统<br>其概念涵盖所有地球定位系统,包括GPS,Glonass,Galieo,BDS等<br><strong>GPS</strong> - Global Positioning System 全球定位系统<br>美国开发的全球定位系统<br><strong>Glonass</strong> - 全球卫星导航系统 GLOBAL NAVIGATION SATELLITE SYSTEM(俄语缩写)<br>苏联开发的全球定位系统<br><strong>Galileo</strong> - Galileo satellite navigation system 伽利略卫星定位系统<br>由欧盟研制和建立的全球卫星导航定位系统<br><strong>BDS</strong> - BeiDou Navigation Satellite System 北斗卫星导航系统<br>中国自行研制的全球卫星导航系统<br><strong>SBAS</strong> - Satellite Based Augmentation Systems(DGNSS/DGPS/WAAS/EGNOS)<br>是利用地球静止轨道卫星建立的地区性广域差分增强系统<br><strong>QZSS</strong> - Quasi-Zenith Satellite System 准天顶卫星系统<br>日本开发的以三颗人造卫星透过时间转移完成全球定位系统区域性功能的卫星扩增系统<br><strong>GANSS</strong> - Galileo and Additional Navigation Satellite Systems  伽利略和附加导航卫星系统<br><strong>AGNSS</strong> - Assisted GNSS 辅助全球定位<br><strong>AGPS</strong> - Assisted Global Positioning System 辅助GPS<br><em>其他定位系统前加A的意思都类似,指除了从卫星获取信息进行位置计算外,还会从网络侧获取更多的辅助信息加速位置计算</em></p>
-<h2 id="辅助和网络定位相关"><a href="#辅助和网络定位相关" class="headerlink" title="辅助和网络定位相关"></a>辅助和网络定位相关</h2><p><strong>SUPL</strong> - OMA Secure User Plane Location<br><strong>LPP</strong> - LTE Positioning Protocol<br><strong>OTDOA</strong> - Observed Time Difference of Arrival(到达时间差定位法)<br><strong>ECID</strong> - Ehance Community ID 增强型小区定位<br><strong>MBS</strong> - Metropolitan Beacon System 城市移动信标系统</p>
-<h2 id="常用概念"><a href="#常用概念" class="headerlink" title="常用概念"></a>常用概念</h2><p>Longitude   经度<br>Latitude    纬度<br>Altitude   海拔高度<br>Geoid   大地水准面<br>Ellipsoid and datum     椭圆和基准<br>WGS-84  美国的地图参考系统（椭球坐标与地球坐标转换)<br>various datum parameters  各种基准参数  </p>
-<p>Four satellites are needed to determine longitude, latitude, altitude and time.<br>需要四颗卫星来确定经度，纬度，高度和时间<br>Each one of these satellites is equipped with onboard atomic clocks.<br>这些卫星中的每一颗都配备有机载原子钟<br>In order to make them even more accurate, they are regularly adjusted or synchronized from various control points on Earth.<br>为了使他们更加精确，他们会经常（定期）从地球上的各个控制点调整和同步。  </p>
-<h3 id="轨道类型"><a href="#轨道类型" class="headerlink" title="轨道类型"></a>轨道类型</h3><p>通常，六种不同类别的轨道被分类：<br>地球同步轨道（GEO）：地球静止轨道，海拔约36,000km<br>中地球轨道（MEO）：中等海拔约10,000公里的倾斜轨道<br>低地球轨道（LEO）：低空轨道高达约1000公里<br>高度（倾斜）椭圆地球轨道（HEO）<br>倾斜地球同步轨道（IGSO）<br>极地地球轨道（PEO）：LEO轨道在极地上空  </p>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2019/02/15/Location/concepts/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-MarkDown/markdown" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/MarkDown/">MarkDown</a>
-    </div>
-
-                        
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2019/02/15/MarkDown/markdown/">
-            <time datetime="2019-02-15T07:30:32.477Z" itemprop="datePublished">2019-02-15</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/MarkDown/markdown.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/MarkDown/markdown.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/MarkDown/markdown.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/02/15/MarkDown/markdown/">MarkDown基本语法参考</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h1 id="一-标题"><a href="#一-标题" class="headerlink" title="一.标题"></a>一.标题</h1><p>需要设置为标题的文字前面加#来表示（#后面要插一个空格） 一个#是一级标题，两个#是二级标题，以此类推。支持六级标题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h1 id="二-字体"><a href="#二-字体" class="headerlink" title="二.字体"></a>二.字体</h1><h2 id="1-斜体"><a href="#1-斜体" class="headerlink" title="1.斜体"></a>1.斜体</h2><p>斜体文字两端使用一个*（或-）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*这些是斜体字*</span><br></pre></td></tr></table></figure>
-<p><em>这些是斜体字</em></p>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2019/02/15/MarkDown/markdown/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Welcom" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-index" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -598,8 +320,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/02/14/Welcom/">
-            <time datetime="2019-02-14T03:39:23.033Z" itemprop="datePublished">2019-02-14</time>
+        <a href="/2019/02/21/index/">
+            <time datetime="2019-02-21T02:30:12.752Z" itemprop="datePublished">2019-02-21</time>
         </a>
     </div>
 
@@ -610,21 +332,21 @@
                         
                         
                             <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/Welcom.md"> Source </a>
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/raw/master/source/_posts/index.md"> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/Welcom.md"> Edit </a>
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/edit/master/source/_posts/index.md"> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/Welcom.md"> History </a>
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/commits/master/source/_posts/index.md"> History </a>
                             </div>
                         
                     </div>
                 
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/02/14/Welcom/">Welcome Amy personal site</a>
+        <h1 class="article-title" itemprop="name">
+            Welcome Amy personal site
         </h1>
     
 
@@ -635,38 +357,18 @@
         
         
             
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><p>欢迎来到我的笔记网站，刚刚学习使用 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! 可以参考hexo文档 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> 。暂时不开放评论功能，如果你看到了我的网站，希望我的积累点滴也能帮助到你。如果网站遇到问题到这里 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> 。</p>
+        
+        
+            <p>欢迎来到我的笔记网站，刚刚学习使用 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! 可以参考hexo文档 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> 。暂时不开放评论功能，如果你看到了我的网站，希望我的积累点滴也能帮助到你。如果网站遇到问题到这里 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> 。</p>
 <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h2 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2019/02/14/Welcom/#more">Read More</a>
+<h2 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h2 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
             </div>
         
         <footer class="article-footer">
@@ -675,11 +377,37 @@
 </article>
 
 
+    
+<nav id="article-nav">
+    
+        <a href="/2019/02/21/Linux/DailyTool/packageTool/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Linux打包压缩相关命令
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
 
 
 
 
     
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
 </section>
         </div>
         <footer id="footer">

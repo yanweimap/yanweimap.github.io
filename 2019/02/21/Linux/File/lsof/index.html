@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>lsof命令 - List open files | AmyManualBook</title>
+    
+    
+        <meta name="keywords" content="lsof">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="lsof应用介绍">
+<meta name="keywords" content="lsof">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lsof命令 - List open files">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/Linux/File/lsof/index.html">
+<meta property="og:site_name" content="AmyManualBook">
+<meta property="og:description" content="lsof应用介绍">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-21T03:22:20.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lsof命令 - List open files">
+<meta name="twitter:description" content="lsof应用介绍">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="AmyManualBook" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AmyManualBook</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DailyTool
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/DailyTool/caculate/">linux计算器和时间显示</a></li>  <li class="file"><a href="/2019/02/21/Linux/DailyTool/packageTool/">Linux打包压缩相关命令</a></li>  <li class="file"><a href="/2019/02/25/Linux/DailyTool/PackageManager/">Linux包管理器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            File
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/2019/02/21/Linux/File/lsof/">lsof命令 - List open files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Network
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Network/networktool1/">网络常用工具命令(1)</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Process
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Process/4kill/">5 ways to kill process</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            LinuxDebug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/LinuxDebug/tooldebug/">ubuntu常见工具问题debug</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Location
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Location/concepts/">定位常用概念与术语</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            MarkDown
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/MarkDown/markdown/">MarkDown基本语法参考</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Wi-Fi
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Wi-Fi/WifiChannel/">Wi-Fi频段速查</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2019/02/21/index/">Welcome Amy personal site</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Linux/File/lsof" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Linux/File/">File</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/lsof/">lsof</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/02/21/Linux/File/lsof/">
+            <time datetime="2019-02-21T03:22:20.861Z" itemprop="datePublished">2019-02-21</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/raw/master/source/_posts/Linux/File/lsof.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/edit/master/source/_posts/Linux/File/lsof.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/commits/master/source/_posts/Linux/File/lsof.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            lsof命令 - List open files
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lsof介绍"><span class="toc-number">1.</span> <span class="toc-text">lsof介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于文件描述符FD"><span class="toc-number">2.</span> <span class="toc-text">关于文件描述符FD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于文件类型TYPE"><span class="toc-number">3.</span> <span class="toc-text">关于文件类型TYPE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用参数"><span class="toc-number">4.</span> <span class="toc-text">常用参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接加文件名"><span class="toc-number">4.1.</span> <span class="toc-text">直接加文件名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程相关"><span class="toc-number">4.2.</span> <span class="toc-text">进程相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件名-目录"><span class="toc-number">4.3.</span> <span class="toc-text">文件名,目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件类型"><span class="toc-number">4.4.</span> <span class="toc-text">文件类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示条件"><span class="toc-number">4.5.</span> <span class="toc-text">显示条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考以下大佬总结"><span class="toc-number">5.</span> <span class="toc-text">参考以下大佬总结</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="lsof介绍"><a href="#lsof介绍" class="headerlink" title="lsof介绍"></a>lsof介绍</h2><p>一个列出当前系统打开文件的工具<br>在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。<br>在终端下输入lsof即可显示系统打开的文件，因为 lsof 需要访问核心内存和各种文件，所以必须以 root 用户的身份运行它才能够充分地发挥其功能  </p>
+<p>由于lsof是查看所有系统中打开的文件,内容太多,这里我们只查看前10行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo lsof |head -n 10</span><br><span class="line">COMMAND   PID   TID   USER   FD  TYPE  DEVICE  SIZE/OFF       NODE NAME</span><br><span class="line">systemd     1         root  cwd   DIR    8,6      4096          2 /</span><br><span class="line">systemd     1         root  rtd   DIR    8,6      4096          2 /</span><br><span class="line">systemd     1         root  txt   REG    8,6   1440088    1048949 /lib/systemd/systemd</span><br><span class="line">systemd     1         root  mem   REG    8,6   1623216    1054267 /lib/x86_64-linux-gnu/libm-2.28.so</span><br><span class="line">systemd     1         root  mem   REG    8,6    125128    1048765 /lib/x86_64-linux-gnu/libudev.so.1.6.11</span><br><span class="line">systemd     1         root  mem   REG    8,6    129232    1054245 /lib/x86_64-linux-gnu/libgpg-error.so.0.24.3</span><br><span class="line">systemd     1         root  mem   REG    8,6     43304    1054256 /lib/x86_64-linux-gnu/libjson-c.so.3.0.1</span><br><span class="line">systemd     1         root  mem   REG    8,6     34872    2760995 /usr/lib/x86_64-linux-gnu/libargon2.so.1</span><br><span class="line">systemd     1         root  mem   REG    8,6    432640    1054226 /lib/x86_64-linux-gnu/libdevmapper.so.1.02.1</span><br></pre></td></tr></table></figure></p>
+<p>各列信息意义:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">COMMAND</th>
+<th style="text-align:center">PID</th>
+<th style="text-align:center">TID</th>
+<th style="text-align:center">USER</th>
+<th style="text-align:center">FD</th>
+<th style="text-align:center">TYPE</th>
+<th style="text-align:center">DEVICE</th>
+<th style="text-align:center">SIZE/OFF</th>
+<th style="text-align:center">NODE</th>
+<th style="text-align:center">NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">进程名</td>
+<td style="text-align:center">进程标识符</td>
+<td style="text-align:center">线程标识符</td>
+<td style="text-align:center">进程所有者</td>
+<td style="text-align:center">文件描述符</td>
+<td style="text-align:center">文件类型</td>
+<td style="text-align:center">磁盘名称?</td>
+<td style="text-align:center">文件大小</td>
+<td style="text-align:center">索引节点</td>
+<td style="text-align:center">文件完整名字</td>
+</tr>
+</tbody>
+</table>
+<h2 id="关于文件描述符FD"><a href="#关于文件描述符FD" class="headerlink" title="关于文件描述符FD"></a>关于文件描述符FD</h2><p><strong>文件描述符，应用程序通过文件描述符识别该文件</strong><br> (1）<strong>cwd</strong>：表示current work dirctory，即：应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改<br>（2）<strong>txt</strong> ：该类型的文件是程序代码，如应用程序二进制文件本身或共享库，如上列表中显示的 /sbin/init 程序<br>（3）lnn：library references (AIX);<br>（4）er：FD information error (see NAME column);<br>（5）jld：jail directory (FreeBSD);<br>（6）ltx：shared library text (code and data);<br>（7）mxx ：hex memory-mapped type number xx.<br>（8）m86：DOS Merge mapped file;<br>（9）<strong>mem</strong>：memory-mapped file;<br>（10）mmap：memory-mapped device;<br>（11）pd：parent directory;<br>（12）<strong>rtd</strong>：root directory;<br>（13）tr：kernel trace file (OpenBSD);<br>（14）v86  VP/ix mapped file;<br>（15）0：表示标准输出<br>（16）1：表示标准输入<br>（17）2：表示标准错误<br><strong>一般在标准输出、标准错误、标准输入后还跟着文件状态模式：r、w、u等</strong><br>（1）u：表示该文件被打开并处于读取/写入模式<br>（2）r：表示该文件被打开并处于只读模式<br>（3）w：表示该文件被打开并处于<br>（4）空格：表示该文件的状态模式为unknow，且没有锁定<br>（5）-：表示该文件的状态模式为unknow，且被锁定<br><strong>同时在文件状态模式后面，还跟着相关的锁</strong><br>（1）N：for a Solaris NFS lock of unknown type;<br>（2）r：for read lock on part of the file;<br>（3）R：for a read lock on the entire file;<br>（4）w：for a write lock on part of the file;（文件的部分写锁）<br>（5）W：for a write lock on the entire file;（整个文件的写锁）<br>（6）u：for a read and write lock of any length;<br>（7）U：for a lock of unknown type;<br>（8）x：for an SCO OpenServer Xenix lock on part of the file;<br>（9）X：for an SCO OpenServer Xenix lock on the entire file;<br>（10）space：if there is no lock.  </p>
+<h2 id="关于文件类型TYPE"><a href="#关于文件类型TYPE" class="headerlink" title="关于文件类型TYPE"></a>关于文件类型TYPE</h2><p>TYPE：文件类型，如DIR、REG等，常见的文件类型<br>（1）DIR：表示目录<br>（2）CHR：表示字符类型<br>（3）BLK：块设备类型<br>（4）UNIX： UNIX 域套接字<br>（5）FIFO：先进先出 (FIFO) 队列<br>（6）IPv4：网际协议 (IP) 套接字</p>
+<h2 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h2><h3 id="直接加文件名"><a href="#直接加文件名" class="headerlink" title="直接加文件名"></a>直接加文件名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof /home/amy/tool/atom</span><br></pre></td></tr></table></figure>
+<p>显示打开此文件的条目  </p>
+<h3 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h3><ol>
+<li>-c   COMMAND<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -c atom</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>显示某个进程打开的所有文件   </p>
+<ol start="2">
+<li>-u   user  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -u root</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>显示所属某个用户的进程打开的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -u ^root</span><br></pre></td></tr></table></figure></p>
+<p>显示除此用户以外的用户打开的文件  </p>
+<p>-c和-u也可以一起用,过滤某个用户的某个进程相关文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -u root -c atom</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>-p PID<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -p 1</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>显示PID相关文件情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -p 1,2,3</span><br></pre></td></tr></table></figure></p>
+<p>显示多个PID相关文件</p>
+<h3 id="文件名-目录"><a href="#文件名-目录" class="headerlink" title="文件名,目录"></a>文件名,目录</h3><ol>
+<li>+D 根据文件目录递归显示<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof +D /home/amy/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>递归的显示所有目录下的打开的文件  </p>
+<ol start="2">
+<li>+d 显示此目录下打开的文件,非递归<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof +d /home/amy/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><ol>
+<li>-i 显示所有网络连接<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -i</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>-i tcp 显示所有TCP连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -i tcp</span><br></pre></td></tr></table></figure></p>
+<p>-i udp 显示所有UDP连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i udp</span><br></pre></td></tr></table></figure></p>
+<p>-i:port 显示端口号相关连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -i:60976</span><br></pre></td></tr></table></figure></p>
+<p>-i tcp:port<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -i tcp:60976</span><br></pre></td></tr></table></figure></p>
+<p>完整的-i 网络参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$lsof -i [protocol][@hostname|hostaddr][:service|port]  </span><br><span class="line">[protocol]: tcp/udp 4/6(ipv4/ipv6)</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>-d 根据文件描述符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -d cwd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-N 文件系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof –N</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="显示条件"><a href="#显示条件" class="headerlink" title="显示条件"></a>显示条件</h3><ol>
+<li>-t 仅显示符合条件的进程号<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -t -u amy</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样仅会显示用户amy相关进程的进程号,可以配合kill一起使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$kill -9 `lsof -t -u amy`</span><br><span class="line">$kill -9 `-i udp`</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li><p>-a 匹配不同条件&amp;<br>-a相当于是与的条件,可以联系不同的参数使用,如果默认没有a,那就是以或满足条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -u root -a -p 68684</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-r repeat模式,每几秒重复操作和显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$lsof -i tcp -a -r5</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>每5s显示一次当前tcp连接</p>
+<h2 id="参考以下大佬总结"><a href="#参考以下大佬总结" class="headerlink" title="参考以下大佬总结"></a>参考以下大佬总结</h2><p>1.<a href="https://www.ibm.com/developerworks/cn/aix/library/au-lsof.html" target="_blank" rel="noopener">使用 lsof 查找打开的文件</a><br>2.<a href="https://www.cnblogs.com/sparkbj/p/7161669.html" target="_blank" rel="noopener">linux lsof命令详解</a><br>3.<a href="https://www.cnblogs.com/ftl1012/p/9247223.html" target="_blank" rel="noopener">Linux lsof命令详解</a><br>4.<a href="https://www.cnblogs.com/onmyway20xx/p/4425330.html" target="_blank" rel="noopener">lsof命令总结</a>  </p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2019/02/21/Linux/Process/4kill/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    5 ways to kill process
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2019/02/21/Linux/DailyTool/packageTool/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Linux打包压缩相关命令</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Amy &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

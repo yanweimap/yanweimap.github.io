@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>网络常用工具命令(1) | AmyManualBook</title>
+    
+    
+        <meta name="keywords" content="网络命令">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="traceroute netstat ss命令">
+<meta name="keywords" content="网络命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络常用工具命令(1)">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/Linux/Network/networktool1/index.html">
+<meta property="og:site_name" content="AmyManualBook">
+<meta property="og:description" content="traceroute netstat ss命令">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-21T06:12:10.294Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络常用工具命令(1)">
+<meta name="twitter:description" content="traceroute netstat ss命令">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="AmyManualBook" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AmyManualBook</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DailyTool
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/DailyTool/caculate/">linux计算器和时间显示</a></li>  <li class="file"><a href="/2019/02/21/Linux/DailyTool/packageTool/">Linux打包压缩相关命令</a></li>  <li class="file"><a href="/2019/02/25/Linux/DailyTool/PackageManager/">Linux包管理器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            File
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/File/lsof/">lsof命令 - List open files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Network
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/2019/02/21/Linux/Network/networktool1/">网络常用工具命令(1)</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Process
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Process/4kill/">5 ways to kill process</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            LinuxDebug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/LinuxDebug/tooldebug/">ubuntu常见工具问题debug</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Location
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Location/concepts/">定位常用概念与术语</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            MarkDown
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/MarkDown/markdown/">MarkDown基本语法参考</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Wi-Fi
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Wi-Fi/WifiChannel/">Wi-Fi频段速查</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2019/02/21/index/">Welcome Amy personal site</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Linux/Network/networktool1" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Linux/Network/">Network</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/网络命令/">网络命令</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/02/21/Linux/Network/networktool1/">
+            <time datetime="2019-02-21T06:12:10.294Z" itemprop="datePublished">2019-02-21</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/raw/master/source/_posts/Linux/Network/networktool1.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/edit/master/source/_posts/Linux/Network/networktool1.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/commits/master/source/_posts/Linux/Network/networktool1.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            网络常用工具命令(1)
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#traceroute"><span class="toc-number">1.</span> <span class="toc-text">traceroute</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute介绍"><span class="toc-number">1.1.</span> <span class="toc-text">traceroute介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute工作原理"><span class="toc-number">1.2.</span> <span class="toc-text">traceroute工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#traceroute常见用法"><span class="toc-number">1.3.</span> <span class="toc-text">traceroute常见用法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#netstat"><span class="toc-number">2.</span> <span class="toc-text">netstat</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#netstat介绍"><span class="toc-number">2.1.</span> <span class="toc-text">netstat介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#netstat常见用法"><span class="toc-number">2.2.</span> <span class="toc-text">netstat常见用法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ss"><span class="toc-number">3.</span> <span class="toc-text">ss</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ss介绍"><span class="toc-number">3.1.</span> <span class="toc-text">ss介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ss常见用法"><span class="toc-number">3.2.</span> <span class="toc-text">ss常见用法</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h1 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h1><h2 id="traceroute介绍"><a href="#traceroute介绍" class="headerlink" title="traceroute介绍"></a>traceroute介绍</h2><p>traceroute (Windows系统下是tracert) 命令利用ICMP 协议定位您的计算机和目标计算机之间的所有路由器。TTL值可以反映数据包经过的路由器或网关的数量，通过操纵独立ICMP呼叫报文的TTL值和观察该报文被抛弃的返回信息，traceroute命令能够遍历到数据包传输路径上的所有路由器。traceroute是一条缓慢的命令，因为每经过一台路由器都要花去大约10到15秒。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ traceroute 10.1.6.32</span><br><span class="line">traceroute to 10.1.6.32 (10.1.6.32), 30 hops max, 60 byte packets</span><br><span class="line">1  10.1.152.254 (10.1.152.254)  4.318 ms  4.603 ms  4.878 ms</span><br><span class="line">2  10.1.6.32 (10.1.6.32)  0.257 ms  0.219 ms  0.211 ms</span><br></pre></td></tr></table></figure></p>
+<h2 id="traceroute工作原理"><a href="#traceroute工作原理" class="headerlink" title="traceroute工作原理"></a>traceroute工作原理</h2><p>其详细过程如下：<br>将传递到目的IP地址的ICMP Echo消息的TTL值被设置为1，该消息报经过第一个路由器时，其TTL值减去1，此时新产生的TTL值为0。<br>由于TTL值被设置为0，路由器判断此时不应该尝试继续转发数据报，而是直接抛弃该数据报。由于数据报的生存周期（TTL值）已经到期，这个路由器会发送一个一个ICMP时间超时，即TTL值过期信息返回到客户端计算机。<br>此时，发出traceroute命令的客户端计算机将显示该路由器的名称，之后可以再发送一个ICMP Echo消息并把TTL值设置为2。<br>第1个路由器仍然对这个TTL值减1，然后，如果可能的话，将这个数据报转发到传输路径上的下一跳。当数据报抵达第2个路由器，TTL值会再被减去1，成为0值。<br>第2个路由器会像第1个路由器一样，抛弃这个数据包，并像第1个路由器那样返回一个ICMP消息。<br>该过程会一直持续，traceroute命令不停递增TTL值，而传输路径上的路由器不断递减该值，直到数据报最终抵达预期的目的地。<br>当目的计算机接收到ICMP Echo消息时，会回传一个ICMP Echo Reply消息。  </p>
+<h2 id="traceroute常见用法"><a href="#traceroute常见用法" class="headerlink" title="traceroute常见用法"></a>traceroute常见用法</h2><p>traceroute的用法为:<br>traceroute [ -46dFITnreAUDV ] [ -f first_ttl ] [ -g gate,… ] [ -i device ] [ -m max_ttl ] [ -N squeries ] [ -p port ] [ -t tos ] [ -l flow_label ] [ -w MAX,HERE,NEAR ] [ -q nqueries ] [ -s src_addr ] [ -z sendwait ] [ –fwmark=num ] host [ packetlen ]</p>
+<p>常用options参数:<br>-4: 使用IPv4<br>-6: 使用IPv6<br>-d: 启用套接字级调试<br>-F: 不分段数据包<br>-f: 从first_ttl hop开始（而不是从1开始）<br>-g: 通过指定的网关路由数据包 (IPv4最多8个，IPv6最多127个）<br>-I: 使用ICMP ECHO进行跟踪路由<br>-T: 使用TCP SYN进行跟踪路由（默认端口为80）<br>-i: 指定要使用的网络接口<br>-m: 设置最大跳数（最大TTL为到达）。默认值为30<br>-N: 设置要同时尝试的探测器数量（默认值为16）<br>-n: 不解析其域名的IP地址<br>-p: 设置要使用的目标端口。它是“default”方法的初始udp端口值（按每个探测增加，默认为33434），或“icmp”的初始seq（也增加了，默认来自1），或一些不变的目的地其他方法的端口（默认值为80）“tcp”，53表示“udp”等）<br>-t: 设置TOS（IPv4服务类型）或TC（IPv6流量包的值)<br>-l: 将指定的flow_label用于IPv6数据包<br>-W: 等待探测不超过此（默认3） 时间长于同一跳的响应时间，或者不超过一些（默认10次）下一跳，或MAX（默认5.0）秒（浮点数也允许点值）<br>-q: 设置每跳的探测次数。默认是3<br>更多参数和完整解释见man traceroute  </p>
+<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><h2 id="netstat介绍"><a href="#netstat介绍" class="headerlink" title="netstat介绍"></a>netstat介绍</h2><p>netstat列出系统上所有的网络套接字连接情况，包括 tcp, udp 以及 unix 套接字，另外它还能列出处于监听状态（即等待接入请求）的套接字。如果你想确认系统上的 Web 服务有没有起来，你可以查看80端口有没有打开。以上功能使 netstat 成为网管和系统管理员的必备利器。  </p>
+<h2 id="netstat常见用法"><a href="#netstat常见用法" class="headerlink" title="netstat常见用法"></a>netstat常见用法</h2><ol>
+<li><p>-a 显示所有监听或非监听socket网络链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -a</span><br><span class="line">Active Internet connections (servers and established)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State      </span><br><span class="line">tcp        0      0 0.0.0.0:netbios-ssn     0.0.0.0:*               LISTEN     </span><br><span class="line">tcp        0      0 localhost:5037          0.0.0.0:*               LISTEN     </span><br><span class="line">tcp        0      0 localhost:domain        0.0.0.0:*               LISTEN     </span><br><span class="line">tcp        0      0 0.0.0.0:ssh             0.0.0.0:*               LISTEN     </span><br><span class="line">tcp        0      0 localhost:ipp           0.0.0.0:*               LISTEN     </span><br><span class="line">tcp        0      0 0.0.0.0:microsoft-ds    0.0.0.0:*               LISTEN     </span><br><span class="line">tcp        0      1 NSGWD180027:44946       10.1.6.6:domain         SYN_SENT   </span><br><span class="line">tcp        0      0 NSGWD180027:60634       113.96.233.144:http     CLOSE_WAIT</span><br><span class="line">tcp        0      0 NSGWD180027:45626       47.95.47.253:https      ESTABLISHED</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-r 显示IP路由表(跟<strong>route</strong>指令显示内容一样)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -r</span><br><span class="line">Kernel IP routing table</span><br><span class="line">Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface</span><br><span class="line">default         _gateway        0.0.0.0         UG        0 0          0 enp1s0</span><br><span class="line">10.1.152.0      0.0.0.0         255.255.255.0   U         0 0          0 enp1s0</span><br><span class="line">link-local      0.0.0.0         255.255.0.0     U         0 0          0 enp1s0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-i 显示网络接口(查看网络接口相关建议使用<strong>ifconfig</strong>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -i</span><br><span class="line">Kernel Interface table</span><br><span class="line">Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg</span><br><span class="line">enp1s0    1500  6400427      0      0 0       2132187      0      0      0 BMRU</span><br><span class="line">lo       65536   532597      0      0 0        532597      0      0      0 LRU</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-s 显示网络统计信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -s</span><br><span class="line">Ip:</span><br><span class="line">    Forwarding: 2</span><br><span class="line">    4803573 total packets received</span><br><span class="line">    9283 with invalid addresses</span><br><span class="line">    0 forwarded</span><br><span class="line">    0 incoming packets discarded</span><br><span class="line">    4665596 incoming packets delivered</span><br><span class="line">    2659745 requests sent out</span><br><span class="line">    2 outgoing packets dropped</span><br><span class="line">    511 dropped because of missing route</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-n 不解析名称,直接显示IP地址()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">netstat -nv</span><br><span class="line">Active Internet connections (w/o servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State      </span><br><span class="line">tcp        0      0 10.1.152.229:43548      203.208.41.47:443       ESTABLISHED</span><br><span class="line">tcp        0      1 10.1.152.229:52668      10.128.161.27:445       SYN_SENT   </span><br><span class="line">tcp        0      0 10.1.152.229:56046      96.43.145.26:443        ESTABLISHED</span><br><span class="line">tcp        0      1 10.1.152.229:52584      10.128.161.27:445       SYN_SENT   </span><br><span class="line">tcp        0      1 10.1.152.229:54060      216.58.200.14:443       SYN_SENT   </span><br><span class="line">tcp        0      1 10.1.152.229:60748      10.128.161.27:139       SYN_SENT</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-p 显示套接字的pid程序名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ netstat -np |head -n 10</span><br><span class="line">(Not all processes could be identified, non-owned process info</span><br><span class="line"> will not be shown, you would have to be root to see it all.)</span><br><span class="line">Active Internet connections (w/o servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 10.1.152.229:37044      113.96.230.37:443       ESTABLISHED -                   </span><br><span class="line">tcp        0      1 10.1.152.229:42914      216.58.199.14:443       SYN_SENT    29400/firefox       </span><br><span class="line">tcp        0      1 10.1.152.229:42916      216.58.199.14:443       SYN_SENT    29400/firefox</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-l 仅显示处于监听状态的网络连接</p>
+</li>
+<li>-t/-u 显示tcp/udp连接</li>
+<li><p>-npe 同时显示用户和进程信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$netstat -nep</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       User       Inode      PID/Program name</span><br><span class="line">tcp        0      1 10.1.152.229:51524      172.217.24.46:443       SYN_SENT    1000       3498922041 29400/firefox       </span><br><span class="line">tcp        0      0 10.1.152.229:35182      54.149.188.75:443       ESTABLISHED 1000       19360947   29400/firefox       </span><br><span class="line">tcp        0      1 10.1.152.229:51526      172.217.24.46:443       SYN_SENT    1000       3498922042 29400/firefox</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果需要过滤某个服务或用户,可以结合grep或watch指令使用</p>
+</li>
+</ol>
+<h1 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h1><h2 id="ss介绍"><a href="#ss介绍" class="headerlink" title="ss介绍"></a>ss介绍</h2><p>ss-socket statistics<br>类似netstat,统计socket信息,ss的优势在于它能够显示更多更详细的有关TCP和连接状态的信息，而且比netstat更快速更高效<br>当服务器的socket连接数量变得非常大时，无论是使用netstat命令还是直接cat /proc/net/tcp，执行速度都会很慢。<br>ss快的秘诀在于，它利用到了TCP协议栈中tcp_diag。tcp_diag是一个用于分析统计的模块，可以获得Linux 内核中第一手的信息，这就确保了ss的快捷高效。   </p>
+<h2 id="ss常见用法"><a href="#ss常见用法" class="headerlink" title="ss常见用法"></a>ss常见用法</h2><p>ss的参数类似netstat:  </p>
+<ol>
+<li>-a 显示所有socket</li>
+<li>-r 解析主机名(默认不解析)</li>
+<li><p>-m 显示socket memory使用情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ss -am |head -n 10</span><br><span class="line">NetidState      Recv-Q Send-Q                                     Local Address:Port                                         Peer Address:Port                                                                                                  </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:avahi-daemon/6836                                        *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)                               </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:-2034236502                                              *                      	 skmem:(r0,rb425984,t0,tb65536,f0,w0,o0,bl0,d0)                                </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:systemd-resolve/860                                      *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)                               </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:packagekitd/1229                                         *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)                               </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:goa-daemon/3578                                          *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)                               </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:kernel                                                   *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)                               </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:firefox/29400                                            *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)                               </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:chrome/22570                                             *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)                               </span><br><span class="line">nl   UNCONN     0      0                                                   rtnl:whoopsie/1333                                            *                      	 skmem:(r0,rb212992,t0,tb212992,f0,w0,o0,bl0,d0)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dst/src 匹配目的/源地址socket</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ss dst 10.1.6.11</span><br><span class="line">Netid              State                Recv-Q                Send-Q                                Local Address:Port                                Peer Address:Port                       </span><br><span class="line">tcp                ESTAB                20                    0                                      10.1.152.229:60804                                  10.1.6.11:microsoft-ds</span><br><span class="line">$ ss src 10.1.152.229</span><br><span class="line">Netid             State                    Recv-Q               Send-Q                              Local Address:Port                                 Peer Address:Port                      </span><br><span class="line">tcp               ESTAB                    0                    0                                    10.1.152.229:36916                                   10.1.6.26:microsoft-ds              </span><br><span class="line">tcp               SYN-SENT                 0                    1                                    10.1.152.229:34324                              172.217.24.206:https                     </span><br><span class="line">tcp               SYN-SENT                 0                    1                                    10.1.152.229:34388                              172.217.24.206:https</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其他一些详细的参数请查询man ss</p>
+<p>参考:  </p>
+<ol>
+<li><a href="https://www.cnblogs.com/beyond_dxb/p/8383821.html" target="_blank" rel="noopener">traceroute命令初探</a>  </li>
+<li><a href="https://blog.csdn.net/u010739551/article/details/80736032" target="_blank" rel="noopener">netstat 的10个基本用法</a>  </li>
+<li><a href="https://www.cnblogs.com/xieshengsen/p/6618993.html" target="_blank" rel="noopener">netstat 命令详解</a></li>
+<li><a href="https://www.cnblogs.com/ftl1012/p/ss.html" target="_blank" rel="noopener">Linux ss命令详解</a></li>
+</ol>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2019/02/21/Linux/DailyTool/caculate/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    linux计算器和时间显示
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2019/02/21/Wi-Fi/WifiChannel/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Wi-Fi频段速查</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Amy &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Linux打包压缩相关命令 | AmyManualBook</title>
+    
+    
+        <meta name="keywords" content="打包压缩">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="gzip bzip2 xz tar命令">
+<meta name="keywords" content="打包压缩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux打包压缩相关命令">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/Linux/DailyTool/packageTool/index.html">
+<meta property="og:site_name" content="AmyManualBook">
+<meta property="og:description" content="gzip bzip2 xz tar命令">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-21T03:21:43.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux打包压缩相关命令">
+<meta name="twitter:description" content="gzip bzip2 xz tar命令">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="AmyManualBook" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AmyManualBook</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            DailyTool
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/DailyTool/caculate/">linux计算器和时间显示</a></li>  <li class="file active"><a href="/2019/02/21/Linux/DailyTool/packageTool/">Linux打包压缩相关命令</a></li>  <li class="file"><a href="/2019/02/25/Linux/DailyTool/PackageManager/">Linux包管理器</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            File
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/File/lsof/">lsof命令 - List open files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Network
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Network/networktool1/">网络常用工具命令(1)</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Process
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Process/4kill/">5 ways to kill process</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            LinuxDebug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/LinuxDebug/tooldebug/">ubuntu常见工具问题debug</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Location
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Location/concepts/">定位常用概念与术语</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            MarkDown
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/MarkDown/markdown/">MarkDown基本语法参考</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Wi-Fi
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Wi-Fi/WifiChannel/">Wi-Fi频段速查</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2019/02/21/index/">Welcome Amy personal site</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-Linux/DailyTool/packageTool" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/Linux/DailyTool/">DailyTool</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/打包压缩/">打包压缩</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/02/21/Linux/DailyTool/packageTool/">
+            <time datetime="2019-02-21T03:21:43.721Z" itemprop="datePublished">2019-02-21</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/raw/master/source/_posts/Linux/DailyTool/packageTool.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/edit/master/source/_posts/Linux/DailyTool/packageTool.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/commits/master/source/_posts/Linux/DailyTool/packageTool.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Linux打包压缩相关命令
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gzip"><span class="toc-number">1.</span> <span class="toc-text">gzip</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#压缩"><span class="toc-number">1.1.</span> <span class="toc-text">压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解压缩"><span class="toc-number">1.2.</span> <span class="toc-text">解压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用最佳的压缩比压缩-并保留原本的文件"><span class="toc-number">1.3.</span> <span class="toc-text">用最佳的压缩比压缩,并保留原本的文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bzip2"><span class="toc-number">2.</span> <span class="toc-text">bzip2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#压缩-1"><span class="toc-number">2.1.</span> <span class="toc-text">压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解压缩-1"><span class="toc-number">2.2.</span> <span class="toc-text">解压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保留源文件压缩"><span class="toc-number">2.3.</span> <span class="toc-text">保留源文件压缩</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#xz"><span class="toc-number">3.</span> <span class="toc-text">xz</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tar"><span class="toc-number">4.</span> <span class="toc-text">tar</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#选项与参数"><span class="toc-number">4.1.</span> <span class="toc-text">选项与参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打包并压缩"><span class="toc-number">4.2.</span> <span class="toc-text">打包并压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解压"><span class="toc-number">4.3.</span> <span class="toc-text">解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打包"><span class="toc-number">4.4.</span> <span class="toc-text">打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拆包"><span class="toc-number">4.5.</span> <span class="toc-text">拆包</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h1 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h1><h2 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h2><p>gzip -v filename<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -v ker.log</span><br><span class="line">ker.log:     79.1% -- replaced with ker.log.gz</span><br></pre></td></tr></table></figure></p>
+<p>注意 gzip默认压缩完会删除原文件</p>
+<h2 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h2><p>gzip -d filename(.gz)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -d ker.log.gz</span><br></pre></td></tr></table></figure></p>
+<p>同gzip压缩指令，解压缩后也会删除原压缩文件</p>
+<h2 id="用最佳的压缩比压缩-并保留原本的文件"><a href="#用最佳的压缩比压缩-并保留原本的文件" class="headerlink" title="用最佳的压缩比压缩,并保留原本的文件"></a>用最佳的压缩比压缩,并保留原本的文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gzip -9 -c ker.log &gt; ker.log.gz</span><br><span class="line">$ ls ker*</span><br><span class="line">ker.log  ker.log.gz</span><br></pre></td></tr></table></figure>
+<p>如果压缩原文件是文本文件，可以直接用zcat查看<br><strong>用zgrep可以过滤字符串</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ zgrep -n &apos;wcnss&apos; ker.log.gz</span><br></pre></td></tr></table></figure></p>
+<p>还有zmore zless 也都可以使用</p>
+<h1 id="bzip2"><a href="#bzip2" class="headerlink" title="bzip2"></a>bzip2</h1><p>压缩比 比gzip还要高，用法几乎相同</p>
+<h2 id="压缩-1"><a href="#压缩-1" class="headerlink" title="压缩"></a>压缩</h2><p>bzip2 -v filename<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 -v ker.log</span><br><span class="line">  ker.log:  5.298:1,  1.510 bits/byte, 81.13% saved, 197622 in, 37299 out.</span><br><span class="line">$ ls ker.log.bz2</span><br><span class="line">ker.log.bz2</span><br></pre></td></tr></table></figure></p>
+<h2 id="解压缩-1"><a href="#解压缩-1" class="headerlink" title="解压缩"></a>解压缩</h2><p>bzip2 -d filename（.bz2）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 -d ker.log.bz2</span><br><span class="line">$ ls ker.log</span><br><span class="line">ker.log</span><br></pre></td></tr></table></figure></p>
+<h2 id="保留源文件压缩"><a href="#保留源文件压缩" class="headerlink" title="保留源文件压缩"></a>保留源文件压缩</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bzip2 -9 -c ker.log &gt; ker.log.bz2</span><br><span class="line">$ ls ker.log*</span><br><span class="line">ker.log      ker.log.bz2</span><br></pre></td></tr></table></figure>
+<p><strong>同样可以使用的字符查看，过滤命令</strong><br>bzcat  bzmore  bzless  bzgrep</p>
+<h1 id="xz"><a href="#xz" class="headerlink" title="xz"></a>xz</h1><p>使用方法同gzip和bzip2，压缩比更高<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ls -hl ker.log*</span><br><span class="line">-rw-r--r-- 1 android android 193K  5月 16 11:57 ker.log</span><br><span class="line">-rw-rw-r-- 1 android android  37K  6月 21 16:14 ker.log.bz2</span><br><span class="line">-rw-rw-r-- 1 android android  40K  6月 21 16:20 ker.log.gz</span><br><span class="line">-rw-rw-r-- 1 android android  33K  6月 21 16:21 ker.log.xz</span><br></pre></td></tr></table></figure></p>
+<p>总结看来,三种压缩方式的压缩比的区别(按压缩文件比例排序): <strong>gz&lt;bz2&lt;xz</strong></p>
+<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p>仅打包或打包并压缩</p>
+<h2 id="选项与参数"><a href="#选项与参数" class="headerlink" title="选项与参数"></a>选项与参数</h2><p>-c :创建打包文件,可搭配 -v 来察看过程中被打包的文件名(filename)<br>-t :察看打包文件的内容含有哪些文件名,重点在察看“文件名”就是了;<br>-x :解打包或解压缩的功能,可以搭配 -C (大写) 在特定目录解开特别留意的是, -c, -t,-x 不可同时出现在一串命令行中。<br>-z :通过 gzip 的支持进行压缩/解压缩:此时文件名最好为 *.tar.gz<br>-j :通过 bzip2 的支持进行压缩/解压缩:此时文件名最好为 *.tar.bz2<br>-J :通过 xz的支持进行压缩/解压缩:此时文件名最好为 *.tar.xz    特别留意, -z, -j,-J 不可以同时出现在一串命令行中<br>-v :在压缩/解压缩的过程中,将正在处理的文件名显示出来!<br>-f filename:<strong>-f后面要立刻接要被处理的文件名!建议 -f 单独写一个选项啰!(比较不会忘记)</strong><br>-C 目录 :这个选项用在解压缩,若要在特定目录解压缩,可以使用这个选项。  </p>
+<h2 id="打包并压缩"><a href="#打包并压缩" class="headerlink" title="打包并压缩"></a>打包并压缩</h2><p>打包并压缩后的文件一般称为tarball<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$tar -czv -f compress_file.tar.gz filename</span><br><span class="line">$tar -cjv -f compress_file.tar.bz2 filename</span><br><span class="line">$tar -cJv -f compress_file.tar.xz filename</span><br></pre></td></tr></table></figure></p>
+<p>这里注意压缩后文件名都有加tar.* 主要用于区分是纯压缩（gzip，bzip2，xz）还是打包压缩（tar）</p>
+<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$tar -xzv -f compress_file.tar.gz -C 解压目录（如果不用-C指向解压目录，默认加压到当前目录）</span><br><span class="line">$tar -xjv -f compress_file.tar.bz2</span><br><span class="line">$tar -xJv -f compress_file.tar.xz</span><br></pre></td></tr></table></figure>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p><strong>打包后的文件一般称为tarfile</strong><br>不带压缩参数即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$tar -cvf package_file.tar filename</span><br></pre></td></tr></table></figure></p>
+<h2 id="拆包"><a href="#拆包" class="headerlink" title="拆包"></a>拆包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$tar -xvf package_file.tar</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2019/02/21/Linux/File/lsof/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    lsof命令 - List open files
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2019/02/21/index/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Welcome Amy personal site</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Amy &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
