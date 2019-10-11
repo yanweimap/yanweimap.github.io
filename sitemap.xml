@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/10/11/Algorithm/fibonacci/</loc>
+    
+    <lastmod>2019-10-11T08:47:29.541Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/10/11/index/</loc>
+    
+    <lastmod>2019-10-11T06:58:17.314Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/10/11/Algorithm/quick_sort/</loc>
     
-    <lastmod>2019-10-11T06:56:52.634Z</lastmod>
+    <lastmod>2019-10-11T06:57:35.650Z</lastmod>
     
   </url>
   
@@ -75,13 +89,6 @@
     <loc>http://yoursite.com/2019/02/21/Linux/DailyTool/packageTool/</loc>
     
     <lastmod>2019-02-21T03:21:43.721Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/02/21/index/</loc>
-    
-    <lastmod>2019-02-21T02:30:12.752Z</lastmod>
     
   </url>
   
