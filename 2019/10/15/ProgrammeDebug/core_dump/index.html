@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    
+    <title>Core Dump问题 | AmyManualBook</title>
+    
+    
+        <meta name="keywords" content="dump">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="编程问题">
+<meta name="keywords" content="dump">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Core Dump问题">
+<meta property="og:url" content="http://yoursite.com/2019/10/15/ProgrammeDebug/core_dump/index.html">
+<meta property="og:site_name" content="AmyManualBook">
+<meta property="og:description" content="编程问题">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-15T02:28:07.571Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Core Dump问题">
+<meta name="twitter:description" content="编程问题">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="AmyManualBook" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">AmyManualBook</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>categories</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Algorithm
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/10/11/Algorithm/fibonacci/">斐波那契函数</a></li>  <li class="file"><a href="/2019/10/11/Algorithm/quick_sort/">快速二叉树(二分法)排序</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            DailyTool
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/DailyTool/caculate/">linux计算器和时间显示</a></li>  <li class="file"><a href="/2019/02/25/Linux/DailyTool/PackageManager/">Linux包管理器</a></li>  <li class="file"><a href="/2019/02/21/Linux/DailyTool/packageTool/">Linux打包压缩相关命令</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            File
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/File/lsof/">lsof命令 - List open files</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Network
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Network/networktool1/">网络常用工具命令(1)</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Process
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Linux/Process/4kill/">5 ways to kill process</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            LinuxDebug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/LinuxDebug/tooldebug/">ubuntu常见工具问题debug</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Location
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Location/concepts/">定位常用概念与术语</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            MarkDown
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/MarkDown/markdown/">MarkDown基本语法参考</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            ProgrammeDebug
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/2019/10/15/ProgrammeDebug/core_dump/">Core Dump问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Wi-Fi
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2019/02/21/Wi-Fi/WifiChannel/">Wi-Fi频段速查</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2019/10/11/index/">Welcome Amy personal site</a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-ProgrammeDebug/core_dump" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/ProgrammeDebug/">ProgrammeDebug</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dump/">dump</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/10/15/ProgrammeDebug/core_dump/">
+            <time datetime="2019-10-15T02:28:45.808Z" itemprop="datePublished">2019-10-15</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/raw/master/source/_posts/ProgrammeDebug/core_dump.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/edit/master/source/_posts/ProgrammeDebug/core_dump.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/yanweimap/yanweimapBlogSource/commits/master/source/_posts/ProgrammeDebug/core_dump.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Core Dump问题
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#错误类型"><span class="toc-number">1.</span> <span class="toc-text">错误类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#产生原因"><span class="toc-number">2.</span> <span class="toc-text">产生原因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实际碰到的问题"><span class="toc-number">3.</span> <span class="toc-text">实际碰到的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数组使用"><span class="toc-number">3.1.</span> <span class="toc-text">数组使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表初始化"><span class="toc-number">3.2.</span> <span class="toc-text">链表初始化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            
+        
+        
+            <h1 id="错误类型"><a href="#错误类型" class="headerlink" title="错误类型"></a>错误类型</h1><p>Segmentation fault (core dumped)</p>
+<h1 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h1><p>Core Dump 核心转储（是操作系统在进程收到某些信号而终止运行时，将此时进程地址空间的内容以及有关进程状态的其他信息写出的一个磁盘文件。这种信息往往用于调试），其实“吐核”这个词形容的很恰当，就是核心内存吐出来.  </p>
+<p>出现这种错误可能的原因（其实就是访问了内存中不应该访问的东西):  </p>
+<ol>
+<li><p>内存访问越界：  </p>
+<ul>
+<li>数组访问越界，因为下标出超出了范围。  </li>
+<li>搜索字符串的时候，通过字符串的结尾符号来判断结束，但是实际上没有这个结束符。  </li>
+<li>使用strcpy, strcat, sprintf, strcmp,strcasecmp等字符串操作函数，超出了字符中定义的可以存储的最大范围。使用strncpy, strlcpy, strncat, strlcat, snprintf, strncmp, strncasecmp等函数防止读写越界。  </li>
+</ul>
+</li>
+<li><p>多线程程序使用了线程不安全的函数。  </p>
+</li>
+<li><p>多线程读写的数据未加锁保护。<br>对于会被多个线程同时访问的全局数据，应该注意加锁保护，否则很容易造成核心转储  </p>
+</li>
+<li><p>非法指针</p>
+<ul>
+<li>使用NULL指针  </li>
+<li>随意使用指针类型强制转换，因为在这种强制转换其实是很不安全的，因为在你不确认这个类型就应该是你转化的类型的时候，这样很容易出错，因为就会按照你强制转换的类型进行访问，这样就有可能访问到不应该访问的内存。  </li>
+</ul>
+</li>
+<li><p>堆栈溢出<br>不要使用大的局部变量（因为局部变量都分配在栈上），这样容易造成堆栈溢出，破坏系统的栈和堆结构，导致出现莫名其妙的错误。</p>
+</li>
+</ol>
+<p>以上部分引自互联网,具体信息见 <em>参考</em></p>
+<h1 id="实际碰到的问题"><a href="#实际碰到的问题" class="headerlink" title="实际碰到的问题"></a>实际碰到的问题</h1><h2 id="数组使用"><a href="#数组使用" class="headerlink" title="数组使用"></a>数组使用</h2><p><strong>数组访问越界</strong><br>刷剑指offer的时候遇到的，题目是:<br>在一个字符串前面添加一部分字符，并且不使用其他空间<br>原理简单讲就是计算好添加字符后的总长度，然后从后向前去写字符数组，这样不需要其他中间变量或者多次写数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void add_array(char ori[],char add[])&#123;</span><br><span class="line">  int i = 0;</span><br><span class="line">  int length_ori;</span><br><span class="line">  int length_add;</span><br><span class="line">  char *p;</span><br><span class="line"></span><br><span class="line">  if(ori == NULL || add == NULL)&#123;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  while(ori[i] != &apos;\0&apos;) //计算原字符串的长度</span><br><span class="line">    i++;</span><br><span class="line">  length_ori = i;</span><br><span class="line"></span><br><span class="line">  i = 0;</span><br><span class="line">  while(add[i] != &apos;\0&apos;) //计算添加字符的长度</span><br><span class="line">    i++;</span><br><span class="line">  length_add = i;</span><br><span class="line"></span><br><span class="line">  p = &amp;ori[length_ori+length_add];  //指针移动到新字符串末尾的位置</span><br><span class="line">  *p = &apos;\0&apos;;  //写入截至符</span><br><span class="line">  p--;</span><br><span class="line"></span><br><span class="line">  for(i=1;i&lt;=length_ori;i++)&#123; //写入原始字符串</span><br><span class="line">    *p = ori[length_ori-i];</span><br><span class="line">    p--;</span><br><span class="line">  &#125;</span><br><span class="line">  for(i=1;i&lt;=length_add;i++)&#123; //写入添加字符串</span><br><span class="line">    *p = add[length_add-i];</span><br><span class="line">    p--;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">  char ori[20] = &quot;I am beautiful!&quot;;</span><br><span class="line">  char add[] = &quot;Absolutely,&quot;;</span><br><span class="line">  char *later;</span><br><span class="line"></span><br><span class="line">  add_array(ori,add);</span><br><span class="line">  printf(&quot;%s\n&quot;,ori);</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果是字符串顺利打出来了，但是检测到错误强制中断了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ./addString.o</span><br><span class="line">Absolutely,I am beautiful!</span><br><span class="line">*** stack smashing detected ***: &lt;unknown&gt; terminated</span><br><span class="line">Aborted (core dumped)</span><br></pre></td></tr></table></figure></p>
+<p>我就奇怪了，字符串操作没问题，为啥会出错，后面检查发现我在给字符串内容的时候光注意给内容了（想写点厉害的），结果忽视了字符串长度…<br>字符数组初始化时给的空间太小了，完全没考虑到添加那部分的字符长度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">char ori[20] = &quot;I am beautiful!&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>后面长度增加到50就好了</p>
+<h2 id="链表初始化"><a href="#链表初始化" class="headerlink" title="链表初始化"></a>链表初始化</h2><p><strong>非法指针(NULL)调用</strong></p>
+<p>写单向链表时，链表头使用指针的指针去存，这样添加或者删除指针的时候就能通过提供头指针的地址而修改第一个节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">typedef struct Node&#123;</span><br><span class="line">  int num;</span><br><span class="line">  struct Node *next;</span><br><span class="line">&#125;node;</span><br><span class="line"></span><br><span class="line">node * add_node(int num)&#123;</span><br><span class="line">  node *nnode;</span><br><span class="line"></span><br><span class="line">  nnode = (node *)malloc(sizeof(node));</span><br><span class="line">  if(nnode == NULL)</span><br><span class="line">    return NULL;</span><br><span class="line">  nnode-&gt;num = num;</span><br><span class="line">  nnode-&gt;next = NULL;</span><br><span class="line"></span><br><span class="line">  return nnode;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void add_node_to_list(node **listhead,int num)&#123;</span><br><span class="line">  node * nnode = NULL;</span><br><span class="line">  node * current;</span><br><span class="line"></span><br><span class="line">  if(*listhead == NULL)&#123;</span><br><span class="line">    *listhead = add_node(num);</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for(current = *listhead;current-&gt;next != NULL;current = current-&gt;next)</span><br><span class="line">    ;</span><br><span class="line">  current-&gt;next = add_node(num);</span><br><span class="line"></span><br><span class="line">  return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void print_list(node **listhead)&#123;</span><br><span class="line">  node *current;</span><br><span class="line"></span><br><span class="line">  if(*listhead == NULL)</span><br><span class="line">    return;</span><br><span class="line">  for(current = *listhead;current != NULL;current = current-&gt;next)</span><br><span class="line">    printf(&quot;%d \t&quot;,current-&gt;num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">  node **listhead;</span><br><span class="line">  int num;</span><br><span class="line"></span><br><span class="line">  while(scanf(&quot;%d&quot;,&amp;num),num &gt;0)&#123;</span><br><span class="line">    add_node_to_list(listhead,num);</span><br><span class="line">  &#125;</span><br><span class="line">  print_list(listhead);</span><br><span class="line"></span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行时报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Segmentation fault (core dumped)</span><br></pre></td></tr></table></figure></p>
+<p>后面才发觉是初始化listhead时就是空的，没给他初始化内容，后面直接*listhead,肯定会dump<br>所以初始化的时候需要像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node **listhead;</span><br><span class="line">node *head;</span><br><span class="line">*listhead = head;</span><br></pre></td></tr></table></figure></p>
+<p>这样listhead指向的是存head的地址，就不会有问题了<br>另外除了初始化，代码中还存在其他问题，比如打印的时候只判断了*listhead是不是NULL,而实际上，<strong>应该最先判断listhead是不是NULL</strong>,然后再判断*listhead<br>目标就是所有指针再使用前都需要先判断其是否NULL:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(listhead == NULL || *listhead == NULL)</span><br><span class="line">  return;</span><br></pre></td></tr></table></figure></p>
+<p>如果listhead为NULL，<strong>或</strong> 条件就成立了，不会再判断后面*listhead的值  </p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>错误原因部分引用自csdn网友博客内容:<br>1.<a href="https://www.cnblogs.com/vancasola/p/9951763.html" target="_blank" rel="noopener">Segmentation fault (core dumped) 错误的一种解决场景</a></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2019/10/11/Algorithm/fibonacci/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">斐波那契函数</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Amy &copy; 2019 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
